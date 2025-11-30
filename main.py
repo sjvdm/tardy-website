@@ -23,12 +23,12 @@ def main_page():
         ).classes('absolute inset-0 w-full h-full object-cover')
         """
         v = ui.video(
-            '/static/output.mp4',
+            '/static/output_mobile1.mp4',
             autoplay=True,
             loop=True,
             muted=True,
             controls=False
-        ).classes('absolute inset-0 w-full h-full object-cover')
+        ).classes('absolute inset-0 w-full h-full object-cover').props('autoplay muted playsinline')
         v.seek(41)  # Start video at 56 seconds
 
         # Gradient overlay

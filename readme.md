@@ -18,11 +18,11 @@ Ok, a short note of a few things:
 
 - Build for linux/amd64 if uploading to GCP, as GCP does not support arm (default on mac m1)
 ```
-docker build --platform=linux/amd64 --progress=plain -t europe-west9-docker.pkg.dev/tardy-477718/tardy/website:test .
+docker build --platform=linux/amd64 --progress=plain -t europe-west9-docker.pkg.dev/tardy-477718/tardy/website:b910270 .
 ```
 - push up to artifact registry
 ```
-docker push europe-west9-docker.pkg.dev/tardy-477718/tardy/website:test
+docker push europe-west9-docker.pkg.dev/tardy-477718/tardy/website:b910270
 ```
 
 us-central1-docker.pkg.dev/buymyitem/tardy
@@ -30,4 +30,10 @@ us-central1-docker.pkg.dev/buymyitem/tardy
 
       serviceAccountName: firebase-adminsdk-fbsvc@tardy-477718.iam.gserviceaccount.com
 
+
+Mobile is picky about video encoding. Ask chat about this, but had to specifically encode the video for mobile to play:
+
+```
+./misc_resources/ffmpeg -i ./static/output.mp4 -vcodec libx264 -profile:v baseline -level 3.0 -an -acodec aac -crf 28 output_mobile1.mp4
+```
 
