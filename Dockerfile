@@ -1,11 +1,12 @@
 FROM python:3.11-slim
 
 WORKDIR /app
-
-COPY . .
+COPY static/ ./static/
+COPY main.py .
+COPY requirements.in .
 
 #compile dependency on tgt platform
-RUN pip install pip==25 #lock to 25 for now, 25.3 (released 25oct) has some comp issues when doing pip-compile
+RUN pip install pip
 RUN pip install pip-tools
 RUN pip-compile requirements.in
 RUN cat requirements.txt
