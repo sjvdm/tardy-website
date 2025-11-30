@@ -138,16 +138,16 @@ def main_page():
 
         # Centered content box
         with ui.element('div').classes(
-            'bg-gray-100 p-10 rounded-2xl shadow-xl w-11/12 max-w-3xl flex flex-col items-center gap-8 text-center'
+            'bg-gray-100 p-10 rounded-2xl shadow-xl w-11/12 max-w-3xl flex flex-col items-center gap-4 text-center'
         ):
 
             # Phone row
             with ui.row().classes('items-center justify-center w-full'):
-                ui.icon('call').classes('text-3xl text-black mr-4')
+                ui.icon('call').classes('text-xl text-black mr-4')
                 ui.link(
                     '+33 6 11 48 77 98',
                     'tel:+33611487798'
-                ).classes('text-2xl text-gray-800 hover:underline')
+                ).classes('text-xl text-gray-800 hover:underline')
 
             # Phone row
             with ui.row().classes('items-center justify-center w-full'):
@@ -157,15 +157,15 @@ def main_page():
                 ui.link(
                     '+33 6 11 48 77 98',
                     'whatsapp:+33611487798'
-                ).classes('text-2xl text-gray-800 hover:underline')
+                ).classes('text-xl text-gray-800 hover:underline')
 
             # Email row
             with ui.row().classes('items-center justify-center w-full'):
-                ui.icon('email').classes('text-3xl text-black mr-4')
+                ui.icon('email').classes('text-xl text-black mr-4')
                 ui.link(
                     'cyril@skitardy.com',
                     'mailto:cyril@skitardy.com'
-                ).classes('text-2xl text-gray-800 hover:underline')
+                ).classes('text-xl text-gray-800 hover:underline')
 
             # Instagram row
             with ui.row().classes('items-center justify-center w-full cursor-pointer'):
@@ -175,7 +175,7 @@ def main_page():
                 ui.link(
                     'Suivez-nous sur Instagram',
                     'https://instagram.com/ski_bois_tardy'
-                ).classes('text-2xl text-gray-800 hover:underline')
+                ).classes('text-xl text-gray-800 hover:underline')
 
             # Facebook row
             with ui.row().classes('items-center justify-center w-full cursor-pointer'):
@@ -185,7 +185,7 @@ def main_page():
                 ui.link(
                     'Suivez-nous sur Facebook',
                     'https://facebook.com/skiboistardy'
-                ).classes('text-2xl text-gray-800 hover:underline')
+                ).classes('text-xl text-gray-800 hover:underline')
 
      
     # --- partenaires SECTION BELOW THE VIDEO ---
