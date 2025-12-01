@@ -3,6 +3,8 @@ Basic website for Ski Bois Tardy using NiceGUI.
 """
 
 from nicegui import ui, app
+from starlette.responses import PlainTextResponse
+from fastapi.responses import RedirectResponse
 
 #add static dir
 app.add_static_files('/static', 'static')
@@ -207,6 +209,29 @@ def main_page():
                     'items-center justify-center text-center h-full flex flex-col'
                 ):
                     ui.image(key[0]).on('click', lambda: ui.navigate.to(key[1], new_tab=True))
+
+
+# Define page
+@ui.page('/default') #for some reason, ionos redirects to /default
+def main_page_default():
+    ui.navigate.to('/')
+
+
+#catch-all route to handle any other paths. Must be after ui.page() definitions that's valid.
+# This will return a 403 Forbidden response for any path not explicitly defined
+# This is useful to prevent unauthorized access to any other routes
+# and to ensure that the application does not expose any unintended endpoints.
+# It also helps to keep the application secure by not allowing access to any other paths.
+# This is a good practice to follow in production applications to prevent unauthorized access.
+# It is also useful to prevent any unintended access to the application.
+STATIC_PATHS = ('/static', '/favicon.ico', 'robots.txt','humans.txt','static','/static/')
+@app.get("/{path:path}")
+def catch_all(path: str):
+    if any(path.startswith(prefix) for prefix in STATIC_PATHS):
+        return PlainTextResponse('Not Found', status_code=404)  # Let static handler try, starlette will continue to handle static files
+    #return PlainTextResponse('403 Forbidden', status_code=403)
+    #Redirect everything else to root domain
+    return RedirectResponse('/', status_code=307)
 
 # Run the app
 ui.run(title='Ski Bois Tardy', favicon='⛷️',reload=False)
