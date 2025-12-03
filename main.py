@@ -4,6 +4,7 @@ Basic website for Ski Bois Tardy using NiceGUI.
 
 from nicegui import ui, app
 from starlette.responses import PlainTextResponse
+from fastapi import Request
 from fastapi.responses import RedirectResponse
 
 #add static dir
@@ -11,7 +12,13 @@ app.add_static_files('/static', 'static')
 
 # Define page
 @ui.page('/')
-def main_page():
+def main_page(request: Request):
+
+    #catch any of the old domains, and do a hard-redirect
+    host = request.headers.get('host', '').lower()
+    # Old → New domain redirect
+    if host in ["ski-bois-tardy.fr", "www.ski-bois-tardy.fr","skis-bois-tardy.com", "www.skis-bois-tardy.com"]:
+        return RedirectResponse("https://ski-tardy.com", status_code=307)
 
     # --- FULLSCREEN HERO VIDEO SECTION ---
     with ui.element('div').classes('relative w-full h-screen overflow-hidden'):
