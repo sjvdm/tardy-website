@@ -18,7 +18,7 @@ def main_page(request: Request):
     host = request.headers.get('host', '').lower()
     # Old → New domain redirect
     if host in ["ski-bois-tardy.fr", "www.ski-bois-tardy.fr","skis-bois-tardy.com", "www.skis-bois-tardy.com"]:
-        return RedirectResponse("https://ski-tardy.com", status_code=307)
+        return RedirectResponse("https://skitardy.com", status_code=307)
 
     # --- FULLSCREEN HERO VIDEO SECTION ---
     with ui.element('div').classes('relative w-full h-screen overflow-hidden'):
