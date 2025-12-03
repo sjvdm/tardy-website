@@ -1,1 +1,2 @@
 nicegui
+fastapi==0.123.0 #0.123.5(released 2dec25) broke coroutines in nicegui! Lots of headaches caused by this. ValueError: [TypeError("'coroutine' object is not iterable"), TypeError('vars() argument must have __dict__ attribute')]
