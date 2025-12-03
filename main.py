@@ -217,6 +217,15 @@ def main_page(request: Request):
                 ):
                     ui.image(key[0]).on('click', lambda: ui.navigate.to(key[1], new_tab=True))
 
+    #do dialog if enabled!
+    if False:
+        with ui.dialog() as dialog, ui.card():
+            ui.label('Play our game now!')
+            ui.image('./static/game_screenshot.png').classes('w-1/4 opacity-50').on('click', lambda: ui.navigate.to('https://game.skitardy.com', new_tab=True))
+            ui.label('Play our game now!')
+            ui.button('Close', on_click=dialog.close)
+
+        ui.button('Open a dialog', on_click=dialog.open)
 
 # Define page
 @ui.page('/default') #for some reason, ionos redirects to /default
@@ -241,4 +250,4 @@ def catch_all(path: str):
     return RedirectResponse('/', status_code=307)
 
 # Run the app
-ui.run(title='Ski Bois Tardy', favicon='⛷️',reload=False)
+ui.run(title='Ski Bois Tardy', favicon='⛷️',reload=False,show=False)
