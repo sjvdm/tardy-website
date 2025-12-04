@@ -49,7 +49,7 @@ def main_page(request: Request):
         with ui.element('div').classes(
             'absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10'
         ):
-            ui.image('./static/tardy_white.png').classes('w-1/4 opacity-50')
+            ui.image('/static/tardy_white.png').classes('w-1/4 opacity-50')
             ui.button('ACHETER', on_click=lambda: ui.run_javascript(\
                 'document.getElementById("products").scrollIntoView({behavior: "smooth"});'
                 )).classes('mt-12 bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition')
@@ -221,7 +221,7 @@ def main_page(request: Request):
     if False:
         with ui.dialog() as dialog, ui.card():
             ui.label('Play our game now!')
-            ui.image('./static/game_screenshot.png').classes('w-1/4 opacity-50').on('click', lambda: ui.navigate.to('https://game.skitardy.com', new_tab=True))
+            ui.image('/static/game_screenshot.png').classes('w-1/4 opacity-50').on('click', lambda: ui.navigate.to('https://game.skitardy.com', new_tab=True))
             ui.label('Play our game now!')
             ui.button('Close', on_click=dialog.close)
 
