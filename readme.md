@@ -18,11 +18,11 @@ Ok, a short note of a few things:
 
 - Build for linux/amd64 if uploading to GCP, as GCP does not support arm (default on mac m1)
 ```
-docker build --platform=linux/amd64 --progress=plain -t europe-west9-docker.pkg.dev/tardy-477718/tardy/website:b910270 .
+docker build --platform=linux/amd64 --progress=plain -t europe-west9-docker.pkg.dev/tardy-477718/tardy/website:1dba944 .
 ```
 - push up to artifact registry
 ```
-docker push europe-west9-docker.pkg.dev/tardy-477718/tardy/website:b910270
+docker push europe-west9-docker.pkg.dev/tardy-477718/tardy/website:1dba944
 ```
 
 us-central1-docker.pkg.dev/buymyitem/tardy

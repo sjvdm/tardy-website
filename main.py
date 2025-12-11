@@ -74,34 +74,34 @@ def main_page(request: Request):
                     'taille':['155 cm','160 cm','165 cm']
                     },
                 'Monchu':{
-                    'desc':'Ski de piste polyvalent avec un rayon plus long que le « Pagu ». Il permet de varier entre petits virages et grandes courbes sur piste. Aussi efficace en bords de pistes.',
+                    'desc':'Ski de piste polyvalent avec un rayon plus long que le Pagu. Il permet de varier entre petits virages et grandes courbes sur piste. Aussi efficace en bords de pistes.',
                     'lst':[
                     "Leger Rocker avant",
                     "Cambre classique",
                     "Talon plat",
                     "Lignes de côtes : 125-80-105",
                     "Rayon de courbe : 16 m"],
-                    'taille':['155 cm','160 cm','165 cm']
+                    'taille':['150 cm','160 cm','170 cm','180 cm']
                     },
                 'Gnolu':{
-                    'desc':'A la recherche de polyvalence le « Gnolu est là. A l’aise sur piste comme dans la poudreuse ou encore dans le « Trafolle », le « Gnolu donne accès a tout le domaine skiable.',
+                    'desc':'A la recherche de polyvalence le Gnolu est là. A l’aise sur piste comme dans la poudreuse ou encore dans le Trafolle, le Gnolu donne accès a tout le domaine skiable.',
                     'lst':[
                     "Rocker avant",
                     "Cambre classique",
                     "Talon plat",
-                    "Lignes de côtes : 130-90-104",
+                    "Lignes de côtes : 130-90-112",
                     "Rayon de courbe : 21 m"],
-                    'taille':['155 cm','160 cm','165 cm']
+                    'taille':['165 cm','170 cm','175 cm','180 cm','185 cm']
                     },
                 'Tramu':{
-                    'desc':'De par sa longueur mini de 180cm le « Tramu » aime les grands « Tout droit » dans la poudreuse. Les virages courts ne sont pas dans son vocabulaire.',
+                    'desc':'De par sa longueur mini de 180cm le Tramu aime les grands Tout droit dans la poudreuse. Les virages courts ne sont pas dans son vocabulaire.',
                     'lst':[
                     "Long Rocker avant",
                     "Cambre classique",
-                    "Talon plat ( Possibilité double Rocker)",
+                    "Double Rocker",
                     "Lignes de côtes : 133-105-120",
                     "Rayon de courbe : 30 m"],
-                    'taille':['155 cm','160 cm','165 cm']
+                    'taille':['180 cm','185 cm','190 cm']
                     },
                 }
 
@@ -218,14 +218,28 @@ def main_page(request: Request):
                     ui.image(key[0]).on('click', lambda: ui.navigate.to(key[1], new_tab=True))
 
     #do dialog if enabled!
-    if False:
-        with ui.dialog() as dialog, ui.card():
-            ui.label('Play our game now!')
-            ui.image('/static/game_screenshot.png').classes('w-1/4 opacity-50').on('click', lambda: ui.navigate.to('https://game.skitardy.com', new_tab=True))
-            ui.label('Play our game now!')
-            ui.button('Close', on_click=dialog.close)
+    if True:
+        with ui.dialog() as dialog:
+            with ui.card().classes(
+                'w-[50%] max-w-[500px] p-6 text-center items-center '
+                'rounded-2xl shadow-lg bg-gray-50'
+            ):
 
-        ui.button('Open a dialog', on_click=dialog.open)
+                ui.label('Jouez au jeu Ski dès maintenant !') \
+                    .classes('text-2xl font-semibold mb-4 text-gray-700')
+
+                ui.image('/static/game_screenshot.png') \
+                    .classes(
+                        'w-3/4 rounded-lg shadow-md cursor-pointer transition '
+                        'hover:scale-105 hover:shadow-xl'
+                    ) \
+                    .on('click', lambda: ui.navigate.to('https://game.skitardy.com', new_tab=True))
+
+                ui.button('Fermer', on_click=dialog.close) \
+                    .props('color=primary rounded') \
+                    .classes('mt-6 px-6 py-2 text-white bg-primary transition hover:brightness-90')
+        dialog.open()
+        #ui.button('Open a dialog', on_click=dialog.open)
 
 # Define page
 @ui.page('/default') #for some reason, ionos redirects to /default
@@ -250,4 +264,4 @@ def catch_all(path: str):
     return RedirectResponse('/', status_code=307)
 
 # Run the app
-ui.run(title='Ski Bois Tardy', favicon='⛷️',reload=False,show=False)
+ui.run(title='Ski Bois Tardy', favicon='/static/tardy_white.png',reload=True,show=False)
